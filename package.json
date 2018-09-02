@@ -4,6 +4,8 @@
   "description": "JDLT developer technical challenge",
   "main": "index.html",
   "scripts": {
+    "start:client": "webpack-dev-server",
+    "start:server": "nodemon",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,6 +20,7 @@
   "homepage": "https://github.com/JDLT-Ltd/dev-challenge#readme",
   "dependencies": {
     "bootstrap": "^3.3.7",
+    "express": "^4.16.3",
     "jquery": "^3.2.1"
   }
 }
