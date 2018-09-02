@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/JDLT-Ltd/dev-challenge#readme",
   "dependencies": {
+    "bluebird": "^3.5.1",
     "bootstrap": "^3.3.7",
     "express": "^4.16.3",
     "jquery": "^3.2.1",

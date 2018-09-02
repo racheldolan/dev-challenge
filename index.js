@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
+mongoose.Promise = require('bluebird');
 const { dbURI, port } = require('./config/environment');
 
 mongoose.connect(dbURI);
