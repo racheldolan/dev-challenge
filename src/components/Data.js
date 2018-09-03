@@ -12,17 +12,22 @@ class Data extends React.Component {
 
   componentDidMount() {
     axios.get('/api/products')
-      .then(res => this.setState({products: res.data }))
-      .then(() => console.log(this.state));
+      .then(res => this.setState({ products: res.data }))
+      .catch(err => console.log(err));
   }
+
+  findPrices = () => {
+    const obj = this.state.products.find(element => (element.productType === this.state.product) && (element.supplier === this.state.supplier));
+    return obj.price;
+  };
 
   handleChange = ({ target: { name, value }}) => {
-    this.setState({ [name]: value }, () => console.log(this.state));
+    this.setState({ [name]: value });
   }
-
 
 
   render(){
+    console.log(this.state);
     return(
       <div className="container-fluid">
         <div className="row">
@@ -34,6 +39,7 @@ class Data extends React.Component {
                 <div className="form-group col-md-6">
                   <label htmlFor="selSupplier">Supplier</label>
                   <select className="form-control" onChange={this.handleChange} name="supplier" id="selSupplier">
+                    <option>Please choose</option>
                     <option>New Co Ltd</option>
                     <option>Old Co Ltd</option>
                   </select>
@@ -41,6 +47,7 @@ class Data extends React.Component {
                 <div className="form-group col-md-6">
                   <label htmlFor="selProduct">Product</label>
                   <select className="form-control" id="selProduct" onChange={this.handleChange} name="product">
+                    <option>Please choose</option>
                     {this.state.products.map(item => (
                       (this.state.supplier === 'New Co Ltd' && item.supplierIsNewCoLtd === true && <option key={item._id}>
                         {item.productType}
@@ -72,12 +79,7 @@ class Data extends React.Component {
                     <td>x</td>
                     <td>{this.state.supplier}</td>
                     <td>{this.state.product}</td>
-                    {this.state.products.map(item => (
-                      <td key={item._id}>
-                        {item.price}
-                      </td>
-                    ))}
-                    {/* // <td>xxxx</td> */}
+                    {this.state.supplier && this.state.product && <td>{this.findPrices()}</td>}
                   </tr>
                 </tbody>
               </table>
