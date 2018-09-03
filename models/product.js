@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const productSchema = new mongoose.Schema({
-  supplier: String,
+  supplierIsNewCoLtd: Boolean,
   productType: String,
   price: Number
 });

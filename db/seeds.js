@@ -8,31 +8,31 @@ const Product = require('../models/product');
 mongoose.connect(dbURI, (err, db) => {
   db.dropDatabase()
     .then(() => Product.create([{
-      supplier: 'New Co Ltd',
+      supplierIsNewCoLtd: true,
       productType: 'Small wongle',
       price: 5
     }, {
-      supplier: 'New Co Ltd',
+      supplierIsNewCoLtd: true,
       productType: 'Large wongle',
       price: 8
     }, {
-      supplier: 'New Co Ltd',
+      supplierIsNewCoLtd: true,
       productType: 'Super wongle',
       price: 12
     }, {
-      supplier: 'Old Co Ltd',
+      supplierIsNewCoLtd: false,
       productType: 'Mini wongle',
       price: 4
     }, {
-      supplier: 'Old Co Ltd',
+      supplierIsNewCoLtd: false,
       productType: 'Small wongle',
       price: 6
     }, {
-      supplier: 'Old Co Ltd',
+      supplierIsNewCoLtd: false,
       productType: 'Large wongle',
       price: 9
     }, {
-      supplier: 'Old Co Ltd',
+      supplierIsNewCoLtd: false,
       productType: 'Super wongle',
       price: 13
     }]))
