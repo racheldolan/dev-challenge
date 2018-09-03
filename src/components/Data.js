@@ -8,8 +8,9 @@ class Data extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('/')
-      .then(res => console.log(res.data));
+    axios.get('/api/products')
+      .then(res => this.setState({products: res.data }))
+      .then(() => console.log(this.state));
   }
 
   render(){
