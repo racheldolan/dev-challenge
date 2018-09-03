@@ -1,10 +1,15 @@
 import React from 'react';
+import axios from 'axios';
 
 class Data extends React.Component {
 
-  constructor(){
-    super();
+  state = {
+    products: []
+  }
 
+  componentDidMount() {
+    axios.get('/')
+      .then(res => console.log(res.data));
   }
 
   render(){

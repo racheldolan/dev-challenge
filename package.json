@@ -7,7 +7,8 @@
     "start:client": "webpack-dev-server",
     "start:server": "nodemon",
     "build": "webpack -p",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "seed": "node db/seeds"
   },
   "repository": {
     "type": "git",
@@ -20,7 +21,9 @@
   },
   "homepage": "https://github.com/JDLT-Ltd/dev-challenge#readme",
   "dependencies": {
+    "axios": "^0.18.0",
     "bluebird": "^3.5.1",
+    "body-parser": "^1.18.3",
     "bootstrap": "^3.3.7",
     "express": "^4.16.3",
     "jquery": "^3.2.1",
