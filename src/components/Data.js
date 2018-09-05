@@ -29,8 +29,16 @@ class Data extends React.Component {
     this.setState({ [name]: value });
   }
 
+  filteredSuppliers = () => {
+    const suppliers = this.state.products.map(product => product.supplier);
+    const uniqueSuppliers = [...new Set(suppliers.map(supplier => supplier))];
+    return uniqueSuppliers;
+  }
+
+
   render(){
     console.log(this.state);
+    // this.filteredSuppliers();
     return(
       <div className="container-fluid">
         <div className="row">
@@ -43,8 +51,9 @@ class Data extends React.Component {
                   <label htmlFor="selSupplier">Supplier</label>
                   <select value="Please choose" className="form-control" onChange={this.handleChange} name="supplier" id="selSupplier">
                     <option disabled>Please choose</option>
-                    <option>New Co Ltd</option>
-                    <option>Old Co Ltd</option>
+                    {this.state.products && this.filteredSuppliers().map(supplier => (
+                      <option key={supplier}>{supplier}</option>
+                    ))}
                   </select>
                 </div>
                 <div className="form-group col-md-6">
