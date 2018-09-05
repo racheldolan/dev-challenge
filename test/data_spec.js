@@ -1,6 +1,6 @@
-/* global describe, beforeEach */
+/* global describe, it, api, expect, beforeEach */
 
-const Product = require('../../models/product');
+const Product = require('../models/product');
 
 const productData = [{
   supplierIsNewCoLtd: true,
@@ -18,5 +18,12 @@ describe('GET /products', () => {
       .then(() => done());
   });
 
+  it('should return a 200 response', done => {
+    api.get('/api/products')
+      .end((err, res) => {
+        expect(res.status).to.eq(200);
+        done();
+      });
+  });
 
 });
