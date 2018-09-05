@@ -42,4 +42,18 @@ describe('GET /products', () => {
       });
   });
 
+  it('should return the correct data', done => {
+    api.get('/api/products')
+      .end((err, res) => {
+        res.body.forEach((product, index) => {
+          expect(product.supplierIsNewCoLtd).to.eq(productData[index].supplierIsNewCoLtd);
+          expect(product.supplier).to.eq(productData[index].supplier);
+          expect(product.productType).to.eq(productData[index].productType);
+          expect(product.price).to.eq(productData[index].price);
+          expect(product.productNumber).to.eq(productData[index].productNumber);
+        });
+        done();
+      });
+  });
+
 });
