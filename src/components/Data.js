@@ -9,7 +9,7 @@ class Data extends React.Component {
     supplier: ''
   }
 
-  componentDidMount() {
+  componentDidMount = () => {
     axios.get('/api/products')
       .then(res => this.setState({ products: res.data }))
       .catch(err => console.log(err));
@@ -29,16 +29,12 @@ class Data extends React.Component {
     this.setState({ [name]: value });
   }
 
-  filteredSuppliers = () => {
-    const suppliers = this.state.products.map(product => product.supplier);
-    const uniqueSuppliers = [...new Set(suppliers.map(supplier => supplier))];
-    return uniqueSuppliers;
+  uniqueSuppliers = () => {
+    return [...new Set(this.state.products.map(product => product.supplier))];
   }
 
 
   render(){
-    console.log(this.state);
-    // this.filteredSuppliers();
     return(
       <div className="container-fluid">
         <div className="row">
@@ -51,7 +47,7 @@ class Data extends React.Component {
                   <label htmlFor="selSupplier">Supplier</label>
                   <select value="Please choose" className="form-control" onChange={this.handleChange} name="supplier" id="selSupplier">
                     <option disabled>Please choose</option>
-                    {this.state.products && this.filteredSuppliers().map(supplier => (
+                    {this.state.products && this.uniqueSuppliers().map(supplier => (
                       <option key={supplier}>{supplier}</option>
                     ))}
                   </select>
