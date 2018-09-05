@@ -34,4 +34,12 @@ describe('GET /products', () => {
       });
   });
 
+  it('should return an array of objects', done => {
+    api.get('/api/products')
+      .end((err, res) => {
+        res.body.forEach(product => expect(product).to.be.an('object'));
+        done();
+      });
+  });
+
 });
