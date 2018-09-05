@@ -1,12 +1,11 @@
 import React from 'react';
 import axios from 'axios';
-// import Select from 'react-select';
 
 class Data extends React.Component {
 
   state = {
     products: [],
-    product: '',
+    item: '',
     supplier: ''
   }
 
@@ -17,14 +16,13 @@ class Data extends React.Component {
   }
 
   findPrices = () => {
-    const obj = this.state.products.find(element => (element.productType === this.state.product) && (element.supplier === this.state.supplier));
+    const obj = this.state.products.find(element => (element.productType === this.state.item) && (element.supplier === this.state.supplier));
     return obj.price;
   };
 
   handleChange = ({ target: { name, value }}) => {
     this.setState({ [name]: value });
   }
-
 
   render(){
     console.log(this.state);
@@ -46,7 +44,7 @@ class Data extends React.Component {
                 </div>
                 <div className="form-group col-md-6">
                   <label htmlFor="selProduct">Product</label>
-                  <select className="form-control" id="selProduct" onChange={this.handleChange} name="product">
+                  <select className="form-control" id="selProduct" onChange={this.handleChange} name="item">
                     <option>Please choose</option>
                     {this.state.products.map(item => (
                       (this.state.supplier === 'New Co Ltd' && item.supplierIsNewCoLtd === true && <option key={item._id}>
@@ -78,8 +76,8 @@ class Data extends React.Component {
                   <tr>
                     <td>x</td>
                     <td>{this.state.supplier}</td>
-                    <td>{this.state.product}</td>
-                    {this.state.supplier && this.state.product && <td>{this.findPrices()}</td>}
+                    <td>{this.state.item}</td>
+                    <td>{this.state.supplier && this.state.item && this.findPrices()}</td>
                   </tr>
                 </tbody>
               </table>

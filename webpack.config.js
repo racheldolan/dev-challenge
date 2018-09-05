@@ -42,11 +42,11 @@ module.exports = {
     historyApiFallback: true,
     hot: true,
     inline: true,
-    port: 4000,
+    port: 8000,
     open: true,
     proxy: {
       '/api': {
-        target: 'http://localhost:8000',
+        target: 'http://localhost:4000',
         secure: false
       }
     }
