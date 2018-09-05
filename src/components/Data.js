@@ -20,6 +20,11 @@ class Data extends React.Component {
     return obj.price;
   };
 
+  findProductNumber = () => {
+    const obj = this.state.products.find(element => (element.productType === this.state.item) && (element.supplier === this.state.supplier));
+    return obj.productNumber;
+  }
+
   handleChange = ({ target: { name, value }}) => {
     this.setState({ [name]: value });
   }
@@ -74,7 +79,7 @@ class Data extends React.Component {
                 </thead>
                 <tbody>
                   <tr>
-                    <td>x</td>
+                    <td>{this.state.supplier && this.state.item && this.findProductNumber()}</td>
                     <td>{this.state.supplier}</td>
                     <td>{this.state.item}</td>
                     <td>{this.state.supplier && this.state.item && this.findPrices()}</td>
