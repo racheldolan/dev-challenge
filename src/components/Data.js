@@ -41,16 +41,16 @@ class Data extends React.Component {
               <div className="row">
                 <div className="form-group col-md-6">
                   <label htmlFor="selSupplier">Supplier</label>
-                  <select className="form-control" onChange={this.handleChange} name="supplier" id="selSupplier">
-                    <option>Please choose</option>
+                  <select value="Please choose" className="form-control" onChange={this.handleChange} name="supplier" id="selSupplier">
+                    <option disabled>Please choose</option>
                     <option>New Co Ltd</option>
                     <option>Old Co Ltd</option>
                   </select>
                 </div>
                 <div className="form-group col-md-6">
                   <label htmlFor="selProduct">Product</label>
-                  <select className="form-control" id="selProduct" onChange={this.handleChange} name="item">
-                    <option>Please choose</option>
+                  <select value="Please choose" className="form-control" id="selProduct" onChange={this.handleChange} name="item">
+                    <option disabled>Please choose</option>
                     {this.state.products.map(item => (
                       (this.state.supplier === 'New Co Ltd' && item.supplierIsNewCoLtd === true && <option key={item._id}>
                         {item.productType}
