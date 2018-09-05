@@ -26,4 +26,12 @@ describe('GET /products', () => {
       });
   });
 
+  it('should return an array', done => {
+    api.get('/api/products')
+      .end((err, res) => {
+        expect(res.body).to.be.an('array');
+        done();
+      });
+  });
+
 });
