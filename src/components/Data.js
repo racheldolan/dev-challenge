@@ -18,7 +18,7 @@ class Data extends React.Component {
   findPrices = () => {
     const obj = this.state.products.find(element => (element.productType === this.state.item) && (element.supplier === this.state.supplier));
     return obj.price;
-  };
+  }
 
   findProductNumber = () => {
     const obj = this.state.products.find(element => (element.productType === this.state.item) && (element.supplier === this.state.supplier));
